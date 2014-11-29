@@ -1,9 +1,0 @@
-{
-  "name": "simple-layout-basic-tutorial",
-  "private": true,
-  "dependencies": {
-    "jquery": "~1.11.1",
-    "pixi.js": "~2.1.1",
-    "simple-layout-js": "~0.1.6"
-  }
-}

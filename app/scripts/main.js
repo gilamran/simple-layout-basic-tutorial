@@ -3,7 +3,7 @@
 
 // init pixi stage
 var stage = new PIXI.Stage(0xFFFFFF);
-var canvas = $('canvas')[0];
+var canvas = document.getElementsByTagName('canvas')[0];
 var renderer = PIXI.autoDetectRenderer(800, 600, {view:canvas});
 
 var assetsFactory = new SimpleLayout.PixiJSImpl.AtlasAssetsFactory_PixiJS({atlasImageUrl:'images/atlas.png', atlasJson:atlasJson});
@@ -59,8 +59,8 @@ function onAssetsLoaded()
 }
 
 function fitCanvasToWindow() {
-	var windowWidth = $(window).width() || 800;
-	var windowHeight = $(window).height() || 600;
+	var windowWidth = document.documentElement.clientWidth || 800;
+	var windowHeight = document.documentElement.clientHeight || 600;
 	renderer.resize(windowWidth, windowHeight);
 
 	if (gameScreen) {
@@ -72,7 +72,7 @@ function fitCanvasToWindow() {
 	renderer.render(stage);
 }
 
-$( window ).resize(fitCanvasToWindow);
+window.addEventListener('resize', fitCanvasToWindow);
 
 // load the assets
 assetsFactory.loadAssets(onAssetsLoaded);
