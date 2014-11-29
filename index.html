@@ -1,76 +1,311 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-    <title>Simple-Layout Basic Tutorial by gilamran</title>
-  </head>
+  <title>Simple-Layout Basic Tutorial by gilamran</title>
+  <link rel="stylesheet" href="stylesheets/monokai_sublime.css">
+  <script src="javascripts/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>Simple-Layout Basic Tutorial</h1>
-        <h2></h2>
-        <a href="https://github.com/gilamran/simple-layout-basic-tutorial" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
+<body>
+<header>
+  <div class="inner">
+    <h1>simple-layout-js Basic Tutorial</h1>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a id="simple-layout-basic-tutorial" class="anchor" href="#simple-layout-basic-tutorial" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple-Layout basic tutorial.</h3>
+    <h2></h2>
+    <a href="https://github.com/gilamran/simple-layout-basic-tutorial" class="button">
+      <small>View project on</small>
+      GitHub</a>
+  </div>
+</header>
 
-<p>Simple Layout is an easy way to layout app/game assets without caring about what is the final resolution.
-In this tutorial I will show you how to create a welcome screen with a menu for a memory game.
-You can view the result here, resize the browser window to see how Simple-Layout deals with any given size.
-You can get the full source code here.</p>
+<div id="content-wrapper">
+  <div class="inner clearfix">
+    <section id="main-content">
+      <h3>
+        What is simple-layout-js?
+      </h3>
 
-<p>In this tutorial I will be using PixiJs, so we'll start by creating a simple index.html:</p>
+      <p>
+        <a href="https://github.com/gilamran/simple-layout-js" target="_blank">simple-layout-js</a> is a lightweight yet powerful generic layout engine for canvas based games and apps. The engine will help you fit your game/app to any device resolution, it uses percent based width and height.
+      </p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-        </section>
+      <h3>
+        The final result
+      </h3>
 
-        <aside id="sidebar">
-          <a href="https://github.com/gilamran/simple-layout-basic-tutorial/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/gilamran/simple-layout-basic-tutorial/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+      <p>In this tutorial I will show you how to create a welcome screen with a menu for a memory game.<br/>
+        You can view the live result
+        <a href="http://tutorials.simple-layout.com/basic-tutorial/" target="_blank">here</a><br/>Resize the browser window to see how Simple-Layout deals with any given size.
+      </p>
+      <img src="images/final-result.jpg">
 
-          <p class="repo-owner"><a href="https://github.com/gilamran/simple-layout-basic-tutorial"></a> is maintained by <a href="https://github.com/gilamran">gilamran</a>.</p>
+      <!-- Lets begin-->
+      <h3>
+        Lets begin
+      </h3>
+      <p>Let's start by creating our index.html:</p>
+			<pre><code class="html">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+    }
+    canvas {
+      display: block; position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;canvas&gt;&lt;/canvas&gt;
+  &lt;script src=&quot;scripts/pixi.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;scripts/simple-layout-js.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;scripts/simple-layout-for-pixijs.js&quot;&gt;&lt;/script&gt;
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
+  &lt;script src=&quot;scripts/atlas.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;scripts/main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p>Few notes about this index.html file</p>
+      <ul>
+        <li>I've used css to make the canvas fit the entire window all the time.</li>
+        <li>Loading <strong>pixi.js</strong>, <strong>simple-layout-js.js</strong>, and
+          <strong>simple-layout-for-pixijs.js</strong> because we are using PixiJs
+        </li>
+        <li>I'm also loading a <strong>atlas.js</strong> that we will see next</li>
+        <li>And the <strong>main.js</strong> that will contain the pixi initialization and our layout definition.</li>
+      </ul>
 
-            <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-54756994-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+      <!-- about atlas image-->
+      <h3>
+        The atlas image
+      </h3>
+      <p>For the menu we'll need a background, logo, and three buttons. here's the atlas image:</p>
+      <img src="images/atlas.png">
 
-  </body>
+      <!-- about the atlas.js-->
+      <h3>
+        The atlas.js
+      </h3>
+      <p>To make things simple, I've created a global variable <strong>atlasJson</strong> with the value of the atlas json.</p>
+			<pre><code class="javascript">var atlasJson = {'frames': {
+  'Logo.png': {
+    'frame': {'x': 4, 'y': 4, 'w': 345, 'h': 287},
+    'rotated': false,
+    'trimmed': false,
+    'spriteSourceSize': {'x': 0, 'y': 0, 'w': 345, 'h': 287},
+    'sourceSize': {'w': 345, 'h': 287}
+  },
+  'background.png': {
+    'frame': {'x': 353, 'y': 4, 'w': 480, 'h': 800},
+    'rotated': false,
+    'trimmed': false,
+    'spriteSourceSize': {'x': 0, 'y': 0, 'w': 480, 'h': 800},
+    'sourceSize': {'w': 480, 'h': 800}
+  },
+  'challengeButton.png': {
+    'frame': {'x': 4, 'y': 808, 'w': 337, 'h': 108},
+    'rotated': false,
+    'trimmed': false,
+    'spriteSourceSize': {'x': 0, 'y': 0, 'w': 337, 'h': 108},
+    'sourceSize': {'w': 337, 'h': 108}
+  },
+  'getProButton.png': {
+    'frame': {'x': 345, 'y': 808, 'w': 330, 'h': 102},
+    'rotated': false,
+    'trimmed': false,
+    'spriteSourceSize': {'x': 0, 'y': 0, 'w': 330, 'h': 102},
+    'sourceSize': {'w': 330, 'h': 102}
+  },
+  'playButton.png': {
+    'frame': {'x': 679, 'y': 808, 'w': 337, 'h': 107},
+    'rotated': false,
+    'trimmed': false,
+    'spriteSourceSize': {'x': 0, 'y': 0, 'w': 337, 'h': 107},
+    'sourceSize': {'w': 337, 'h': 107}
+  }},
+  'meta': {
+    'image': 'atlas.png',
+    'format': 'RGBA8888',
+    'size': {'w': 1024, 'h': 1024},
+    'scale': '1'
+  }
+};</code></pre>
+
+      <!-- Initialize pixi-->
+      <h3>
+        Initialize pixi.
+      </h3>
+      <p>Here we'll initialize pixi, and give it our canvas, the canvas that will always fill the entire window.</p>
+			<pre><code class="javascript">var stage = new PIXI.Stage(0xFFFFFF);
+var canvas = document.getElementsByTagName('canvas')[0];
+var renderer = PIXI.autoDetectRenderer(800, 600, {view:canvas});</code></pre>
+
+      <!-- Fit the renderer to the window size-->
+      <h3>
+        Fit the renderer to the window size.
+      </h3>
+      <p>In the previous part we've initialized pixi and the renderer with the size of 800x600, this will be irrelevant because here we will be listening to the window resize event, and resize the renderer to the window size.</p>
+			<pre><code class="javascript">function fitRendererToWindow() {
+  var windowWidth = document.documentElement.clientWidth || 800;
+  var windowHeight = document.documentElement.clientHeight || 600;
+  renderer.resize(windowWidth, windowHeight);
+
+  // ask Pixi to draw the stage
+  renderer.render(stage);
+}
+
+window.addEventListener('resize', fitRendererToWindow);</code></pre>
+
+
+      <!-- Creating the layout-->
+      <h3>
+        Creating the layout.
+      </h3>
+      <p>So far we've done nothing special, it's a pixi html page that has a dynamic width and height.<br/>
+Now we will use the simple layout to construct the game menu.</p>
+			<pre><code class="javascript">function createLayout() {
+  // creating the layout
+  var rootContainer     = new SimpleLayout.LayoutContainer();
+  var mainContainer     = new SimpleLayout.LayoutContainer();
+  var buttonsContainer  = new SimpleLayout.LayoutContainer();
+  var background        = new SimpleLayout.LayoutItem();
+
+  background.assetId = 'background.png';
+  background.fillArea = true;
+
+  buttonsContainer.addNewLayoutItem('playButton.png');
+  buttonsContainer.addNewLayoutItem('challengeButton.png');
+  buttonsContainer.addNewLayoutItem('getProButton.png');
+  buttonsContainer.layout = new SimpleLayout.layout.VerticalLayout();
+
+  var logoLayoutItem = new SimpleLayout.LayoutItem();
+  logoLayoutItem.requestedHeightPercent = 0.4;
+  logoLayoutItem.assetId = 'Logo.png';
+
+  mainContainer.addLayoutItem(logoLayoutItem);
+  mainContainer.addLayoutItem(buttonsContainer);
+  mainContainer.layout = new SimpleLayout.layout.VerticalLayout();
+  mainContainer.layout.paddingLeft = 0.2;
+  mainContainer.layout.paddingRight = 0.2;
+  mainContainer.layout.paddingTop = 0.1;
+  mainContainer.layout.paddingBottom = 0.1;
+  mainContainer.layout.gap = 0.1;
+
+  rootContainer.layout = new SimpleLayout.layout.BasicLayout();
+  rootContainer.addLayoutItem(background);
+  rootContainer.addLayoutItem(mainContainer);
+  return rootContainer;
+}</code></pre>
+      <p>We've created few LayoutContainers that will hold the layout, each with its own layout object (BasicLayout, and VerticalLayout).
+      We've also created the LayoutItems.<br/>LayoutItems are the actual visual items, you can see that we've given them each an assetId.
+      This assetId is what simple-layout-js will use to create the asset using an assetsFactory (We will see that next)<br/></p>
+      <p>The layout that I've created is constructed using a root container that have two children, a background and the main container. Both will consume all the area that was given to them because I've given it a BasicLayout.</p>
+      <p>The main container uses a VerticalLayout (With some padding) to vertically layout his two children, the logo (That requested 40% of the height) and the buttons container (That will take the rest of the height).</p>
+      <p>The buttons container also uses the VerticalLayout and it holds all three buttons that will split the height evenly.</p>
+      <p>There are many ways to layout your screens, be sure to checkout <a href="http://www.simple-layout.com/#/api" target="_blank">The full API</a> of simple-layout-js to get the most out of it.</p>
+
+
+      <!-- Creating the assets-->
+      <h3>
+        Creating the assets.
+      </h3>
+      <p>As you saw before, when I created the LayoutItems I gave them an assetId, simple-layout-js also comes with asset factories to create all these assets for you. simple-layout-js comes with few implementations of asset factories. You can also created your own if you wish.</p>
+      <p>In this tutorial I will be using the AtlasAssetsFactory_PixiJS to create Pixi assets from the atlas that we declared before.</p>
+			<pre><code class="javascript">var assetsFactory = new SimpleLayout.PixiJSImpl.AtlasAssetsFactory_PixiJS({atlasImageUrl:'images/atlas.png', atlasJson:atlasJson});
+var gameScreen;
+
+function onAssetsLoaded()
+{
+  // creating the game layout
+  gameScreen = createLayout();
+
+  // asking SimpleLayout to go over all the children and create the assets using the provided factory
+  SimpleLayout.LayoutAssetsFactory.createAssets(gameScreen, assetsFactory);
+
+  // After creating the real Pixi assets (Concrete Display Objects)
+  // Add the the root parent to the stage
+  stage.addChild(gameScreen.displayObject.getConcreteDisplayObject());
+
+  fitCanvasToWindow();
+}
+
+// load the assets
+assetsFactory.loadAssets(onAssetsLoaded);</code></pre>
+
+
+
+      <!-- Render the layout on window resize-->
+      <h3>
+        Render the layout on window resize.
+      </h3>
+      <p>The last step is to make sure that we execute the layout on window resize. Add the following code to the fitRendererToWindow function. (Before the render)</p>
+			<pre><code class="javascript">if (gameScreen) {
+  // execute the layout for the current renderer size
+  gameScreen.fitInto(renderer.width, renderer.height);
+}</code></pre>
+
+
+
+      <!-- We're done!-->
+      <h3>
+        We're done!
+      </h3>
+      <p>As you can tell, most of this tutorial covered the construction of a pixi html page, and in the last part we've actually used simple-layout-js.<br/>
+        With one simple function I was able to fit to any window size, and forget about it. There are many solutions to this problem but simple-layout-js covers it all in the most simple way.
+      </p>
+
+
+      <!-- The editor-->
+      <h3>
+        The editor.
+      </h3>
+      <p>Simple Layout also have a <a href="http://editor.simple-layout.com" target="_blank">WYSIWYG editor</a> that will save you the time and effort of defining your layout in code. The editor can export a json that can be imported into simple-layout in one line.<br/>Give it a try!
+      </p>
+    </section>
+
+    <aside id="sidebar">
+      <a href="https://github.com/gilamran/simple-layout-basic-tutorial/zipball/master" class="button">
+        <small>Tutorial files</small>
+        .zip file
+      </a>
+      <a href="https://github.com/gilamran/simple-layout-basic-tutorial/tarball/master" class="button">
+        <small>Tutorial files</small>
+        .tar.gz file
+      </a>
+
+      <p class="repo-owner">Maintained by <a href="https://github.com/gilamran">gilamran</a>.</p>
+    </aside>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  try {
+    var pageTracker = _gat._getTracker("UA-54756994-1");
+    pageTracker._trackPageview();
+  } catch (err) {
+  }
+</script>
+
+</body>
 </html>
